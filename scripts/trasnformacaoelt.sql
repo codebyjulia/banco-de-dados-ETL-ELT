@@ -1,0 +1,19 @@
+DROP TABLE IF EXISTS public.internacoes;
+
+CREATE TABLE public.internacoes AS
+SELECT
+    TO_DATE(NULLIF(TRIM("DT_INTER"), ''), 'YYYYMMDD') AS "DT_INTER",
+
+    TO_DATE(NULLIF(TRIM("DT_SAIDA"), ''), 'YYYYMMDD') AS "DT_SAIDA",
+
+    "IDADE"::BIGINT AS "IDADE",
+
+    "DIAS_PERM"::BIGINT AS "DIAS_PERM",
+
+    ROUND("VAL_TOT"::NUMERIC, 2)::DOUBLE PRECISION AS "VAL_TOT",
+
+    "MORTE"::BIGINT AS "MORTE",
+
+    NULLIF(TRIM("DIAG_PRINC"), '') AS "DIAG_PRINC"
+
+FROM public.internacoes_brutas;
